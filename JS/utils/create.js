@@ -14,7 +14,7 @@ export default function create( el, classNames, child, parent, ...dataAttr) {
     }
 
     if (classNames) {
-        element.classList.add(...classNames.split(' ')); //["class1", "class2"] - создаем массив с помощью сплит, а потом "высыпаем обратно" в метод адд с помощью оператора ...-спрэд
+        element.classList.add(...classNames.split(' '));
     }
     if (child && Array.isArray(child)) {
         child.forEach((childElement) => childElement && element.appendChild(childElement));
@@ -27,7 +27,6 @@ export default function create( el, classNames, child, parent, ...dataAttr) {
     if (parent) {
         parent.appendChild(element);
     }
-    //<span> id="" data-code="" disabled</span> el.dataset.code = ""
     if (dataAttr.length) {
         dataAttr.forEach(([attrName, attrValue]) => {
             if(attrValue === '') {
