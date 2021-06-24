@@ -8,7 +8,6 @@ import Key from './Key.js';
 
 const main = create('main', '',
   [create('h1', 'title', 'RSS Virtual Keyboard'),
-    create('h3', 'subtitle', 'Windows keyboard that has been made under Linux'),
     create('p', 'hint', 'Use left <kbd>Ctrl</kbd> + <kbd>Alt</kbd> to switch language. Last language saves in localStorage')]);
 
 export default class Keyboard {
