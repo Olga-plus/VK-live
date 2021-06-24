@@ -1,43 +1,44 @@
 /**
  * @param {String} el
  * @param {String} classNames
- * @param {HTMLElements} child
- * @param {HTMLElements} parent
- * @param {...array} dataAttr 
+ * @param {HTMLElement} child
+ * @param {HTMLElement} parent
+ * @param  {...array} dataAttr
  */
-export default function create( el, classNames, child, parent, ...dataAttr) {
+
+ export default function create(el, classNames, child, parent, ...dataAttr) {
     let element = null;
     try {
-        element = document.create.element(el);
+      element = document.createElement(el);
     } catch (error) {
-        throw new Error('Unable to create HTMLElement! Give a proper tag name');
+      throw new Error('Unable to create HTMLElement! Give a proper tag name');
     }
-
-    if (classNames) {
-        element.classList.add(...classNames.split(' '));
-    }
+  
+    if (classNames) element.classList.add(...classNames.split(' '));
+  
     if (child && Array.isArray(child)) {
-        child.forEach((childElement) => childElement && element.appendChild(childElement));
+      child.forEach((childElement) => childElement && element.appendChild(childElement));
     } else if (child && typeof child === 'object') {
-        element.appendChild(child);
+      element.appendChild(child);
     } else if (child && typeof child === 'string') {
-        element.innerHTML = child;
+      element.innerHTML = child;
     }
-
+  
     if (parent) {
-        parent.appendChild(element);
+      parent.appendChild(element);
     }
+  
     if (dataAttr.length) {
-        dataAttr.forEach(([attrName, attrValue]) => {
-            if(attrValue === '') {
-                element.setAttribute(attrName, '');
-            } 
-            if (attrName.math(/value|id|placeholder|cols|rows|autocorrect|spellcheck/)){
-                element.setAttribute(attrName, attrValue);
-            } else {
-                 element.dataset[attrName] = attrValue;
-            }
-        });
+      dataAttr.forEach(([attrName, attrValue]) => {
+        if (attrValue === '') {
+          element.setAttribute(attrName, '');
+        }
+        if (attrName.match(/value|id|placeholder|cols|rows|autocorrect|spellcheck/)) {
+          element.setAttribute(attrName, attrValue);
+        } else {
+          element.dataset[attrName] = attrValue;
+        }
+      });
     }
     return element;
-}
+  }

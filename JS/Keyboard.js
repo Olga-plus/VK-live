@@ -46,30 +46,31 @@ export default class Keyboard {
       });
     });
 
-    document.addEventListener('keydown', this.handleEvent); 
-    document.addEventListener('keyup', this.handleEvent); 
+    document.addEventListener('keydown', this.handleEvent);
+    document.addEventListener('keyup', this.handleEvent);
     this.container.onmousedown = this.preHandleEvent;
     this.container.onmouseup = this.preHandleEvent;
   }
 
-  preHandleEvent = (e) => { 
+  preHandleEvent = (e) => {
     e.stopPropagation();
     const keyDiv = e.target.closest('.keyboard__key');
-    if (!keyDiv) return; 
+    if (!keyDiv) return;
     const { dataset: { code } } = keyDiv;
     keyDiv.addEventListener('mouseleave', this.resetButtonState);
     this.handleEvent({ code, type: e.type });
   };
 
-  handleEvent = (e) => { 
-    if (e.stopPropagation) e.stopPropagation(); 
-    const { code, type } = e; 
+  handleEvent = (e) => {
+    if (e.stopPropagation) e.stopPropagation();
+    const { code, type } = e;
     const keyObj = this.keyButtons.find((key) => key.code === code);
     if (!keyObj) return;
-    this.output.focus(); 
+    this.output.focus();
 
-    if (type.match(/keydown|mousedown/)) { 
+    if (type.match(/keydown|mousedown/)) {
       if (!type.match(/mouse/)) e.preventDefault();
+
 
       if (code.match(/Shift/)) this.shiftKey = true;
 
@@ -77,8 +78,8 @@ export default class Keyboard {
 
       if (code.match(/Control|Alt|Caps/) && e.repeat) return;
 
-      if (code.match(/Control/)) this.ctrKey = true; 
-      if (code.match(/Alt/)) this.altKey = true; 
+      if (code.match(/Control/)) this.ctrKey = true;
+      if (code.match(/Alt/)) this.altKey = true;
       if (code.match(/Control/) && this.altKey) this.switchLanguage();
       if (code.match(/Alt/) && this.ctrKey) this.switchLanguage();
 
@@ -93,8 +94,6 @@ export default class Keyboard {
         keyObj.div.classList.remove('active');
       }
 
-
-      
       if (!this.isCaps) {
         this.printToOutput(keyObj, this.shiftKey ? keyObj.shift : keyObj.small);
       } else if (this.isCaps) {
@@ -113,6 +112,7 @@ export default class Keyboard {
       }
       if (code.match(/Control/)) this.ctrKey = false;
       if (code.match(/Alt/)) this.altKey = false;
+
       if (!code.match(/Caps/)) keyObj.div.classList.remove('active');
     }
   }
@@ -155,7 +155,7 @@ export default class Keyboard {
       });
     } else {
       this.keyButtons.forEach((button) => {
-        if (button.sub.innerHTML && !button.isFnKey) {е
+        if (button.sub.innerHTML && !button.isFnKey) {
           button.sub.classList.remove('sub-active');
           button.letter.classList.remove('sub-inactive');
           if (!this.isCaps) {
