@@ -325,3 +325,21 @@ export default [
       code: 'Win',
     },
   ];
+
+  function add (x) {
+    return function (y) {
+      return x + y;
+    }
+  }
+
+  function add(a) {
+    let sum = a;
+    let f = b => {
+      sum += b;
+      return f;
+    }
+    
+    f.toString = () => sum;
+    
+    return f;
+  }
