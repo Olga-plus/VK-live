@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Olga-plus/VK-live#readme",
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "eslint": "^7.28.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.2"
