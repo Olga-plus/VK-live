@@ -60,7 +60,7 @@ export default class Keyboard {
     this.handleEvent({ code, type: e.type });
   };
 
-  handleEvent = (e) => {
+  handleEvent = (e) => { // e- event
     if (e.stopPropagation) e.stopPropagation();
     const { code, type } = e;
     const keyObj = this.keyButtons.find((key) => key.code === code);
@@ -68,6 +68,8 @@ export default class Keyboard {
     this.output.focus();
 
     if (type.match(/keydown|mousedown/)) {
+      if (type.match(/key/)) e.preventDefault();
+      
       if (!type.match(/mouse/)) e.preventDefault();
 
       if (code.match(/Shift/)) this.shiftKey = true;
