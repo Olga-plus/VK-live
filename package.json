@@ -1,0 +1,27 @@
+{
+  "name": "virtual_board",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext .js JS/ --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Olga-plus/VK-live.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Olga-plus/VK-live/issues"
+  },
+  "homepage": "https://github.com/Olga-plus/VK-live#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.2"
+  }
+}
