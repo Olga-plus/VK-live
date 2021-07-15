@@ -4,7 +4,7 @@
 import * as storage from './storage.js';
 import create from './utils/create.js';
 import language from './layouts/index.js';
-import Key from './Key.js';
+import Key from './key.js';
 
 const main = create('main', '',
   [create('h1', 'title', 'RSS Virtual Keyboard'),
